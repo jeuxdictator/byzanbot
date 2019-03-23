@@ -22,12 +22,11 @@ client.on(`message`, message =>{
 
             message.delete()
 
-            let user = message.guild.member(message.author);
-
             let role = message.guild.roles.find(m => m.id === "558992005301141530");
             if(!role) return console.log("Le rôle n'existe pas !");
 
-            message.author.addRole(role).catch(console.error);
+            let user = message.guild.member(message.author);
+            user.addRole(role).catch(console.error);
             message.channel.send(`**Bravo, tu as accepté le règlement**`);
             
         }else{
