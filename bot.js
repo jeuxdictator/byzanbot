@@ -17,6 +17,7 @@ client.on("ready", () => {
 
 
 client.on(`message`, message =>{
+    if(message.author.id === client.user.id) return 
     if(message.channel.id === "384285377709473792"){
         if(message.content === "j'accèpte" || message.content === "j'accepte") {
 
@@ -27,7 +28,7 @@ client.on(`message`, message =>{
 
             let user = message.guild.member(message.author);
             user.addRole(role).catch(console.error);
-            message.channel.send(`**Bravo, tu as accepté le règlement**`);
+            message.author.send(`**Bravo, tu as accepté le règlement**`);
             
         }else{
             message.delete()
