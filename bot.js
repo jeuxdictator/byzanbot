@@ -7,7 +7,7 @@ client.on("ready", () => {
     console.log(`connecté : ${client.user.tag}!`)
     client.user.setPresence({
         game: { 
-            name: `les egns se co aux serveur !`,
+            name: `les gens se co aux serveur !`,
             type: 'WATCHING' 
         },
         status: 'dnd' 
@@ -18,7 +18,7 @@ client.on("ready", () => {
 
 client.on(`message`, message =>{
     if(message.channel.id === "384285377709473792"){
-        if(message.content.startsWith(+ "j'accèpte")) {
+        if(message.content === "j'accèpte" || message.content === "j'accepte") {
 
             message.delete()
 
