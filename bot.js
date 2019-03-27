@@ -27,12 +27,14 @@ client.on(`message`, message =>{
             if(!role) return console.log("Le rôle n'existe pas !");
 
             let user = message.guild.member(message.author);
-            user.addRole(role).catch(console.error);
-            message.author.send(`**Bravo, tu as accepté le règlement**`);
+            user.addRole(role).catch(err => {
+                message.channel.send(err).then(message => setTimeout(function(){message.delete()}, 5000))
+            });
+            message.reply(`**Bravo, tu as accepté le règlement**`).then(message => setTimeout(function(){message.delete()}, 2000));
             
         }else{
             message.delete()
-            message.author.send("Veuillez envoyé `j'accèpte` dans le salon, et non autre chose")
+            message.reply("Veuillez envoyé `j'accèpte` dans le salon, et non autre chose").then(message => setTimeout(function(){message.delete()}, 3000))
         }
     }
 
